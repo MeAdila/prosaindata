@@ -1,4 +1,15 @@
 Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/nbclient/client.py", line 730, in _async_poll_for_reply
+    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
+  File "/usr/local/lib/python3.8/dist-packages/nbclient/util.py", line 96, in ensure_async
+    result = await obj
+  File "/usr/local/lib/python3.8/dist-packages/jupyter_client/asynchronous/channels.py", line 48, in get_msg
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
   File "/usr/local/lib/python3.8/dist-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
   File "/usr/local/lib/python3.8/dist-packages/nbclient/client.py", line 1204, in execute
@@ -11,103 +22,18 @@ Traceback (most recent call last):
     return future.result()
   File "/usr/local/lib/python3.8/dist-packages/nbclient/client.py", line 663, in async_execute
     await self.async_execute_cell(
-  File "/usr/local/lib/python3.8/dist-packages/nbclient/client.py", line 965, in async_execute_cell
-    await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/usr/local/lib/python3.8/dist-packages/nbclient/client.py", line 862, in _check_raise_for_error
-    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
-nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
-------------------
-header = {'User-Agent': "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"}
-url = 'https://search.okezone.com/search?q=ridwan%20kamil\&highlight=1&sort=desc&start=0'
-
-judul = []
-konten = []
-
-for page in range(1,9):
-  req = re.get(url+str(page), headers=header)
-  soup = bs(req.text, 'html.parser')
-  items = soup.findAll('div', 'listnews')
-  for it in items:
-    link = it.find('div', 'explan')
-    title = it.find('a')['href'].text 
-    judul.append(title)
-
-    if link != '':
-      req2 = re.get(str(link), headers=header)
-      soup2 = bs(req2.text, 'html.parser')
-      items2 = soup2.findAll("div", "contentx")
-      for it2 in items2:
-        isi = it2.find('p').text
-
-        if isi != '':
-          konten.append(isi)
-
-
-JudulBerita = pd.DataFrame(judul, columns=["Judul Berita"])
-IsiBerita = pd.DataFrame(konten, columns=["Isi Berita"])
-
-data = pd.concat([JudulBerita, IsiBerita], axis=1)
-data = data.loc[0:50]
-data
-------------------
-
-[0;31m[0m
-[0;31mTypeError[0mTraceback (most recent call last)
-[0;32m<ipython-input-2-8dbf43e75ec3>[0m in [0;36m<module>[0;34m[0m
-[1;32m     29[0m [0;34m[0m[0m
-[1;32m     30[0m [0mdata[0m [0;34m=[0m [0mpd[0m[0;34m.[0m[0mconcat[0m[0;34m([0m[0;34m[[0m[0mJudulBerita[0m[0;34m,[0m [0mIsiBerita[0m[0;34m][0m[0;34m,[0m [0maxis[0m[0;34m=[0m[0;36m1[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m---> 31[0;31m [0mdata[0m [0;34m=[0m [0mdata[0m[0;34m.[0m[0mloc[0m[0;34m[[0m[0;36m0[0m[0;34m:[0m[0;36m50[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     32[0m [0mdata[0m[0;34m[0m[0;34m[0m[0m
-
-[0;32m/usr/local/lib/python3.8/dist-packages/pandas/core/indexing.py[0m in [0;36m__getitem__[0;34m(self, key)[0m
-[1;32m    929[0m [0;34m[0m[0m
-[1;32m    930[0m             [0mmaybe_callable[0m [0;34m=[0m [0mcom[0m[0;34m.[0m[0mapply_if_callable[0m[0;34m([0m[0mkey[0m[0;34m,[0m [0mself[0m[0;34m.[0m[0mobj[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m--> 931[0;31m             [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_getitem_axis[0m[0;34m([0m[0mmaybe_callable[0m[0;34m,[0m [0maxis[0m[0;34m=[0m[0maxis[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m    932[0m [0;34m[0m[0m
-[1;32m    933[0m     [0;32mdef[0m [0m_is_scalar_access[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mkey[0m[0;34m:[0m [0mtuple[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-
-[0;32m/usr/local/lib/python3.8/dist-packages/pandas/core/indexing.py[0m in [0;36m_getitem_axis[0;34m(self, key, axis)[0m
-[1;32m   1140[0m         [0;32mif[0m [0misinstance[0m[0;34m([0m[0mkey[0m[0;34m,[0m [0mslice[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   1141[0m             [0mself[0m[0;34m.[0m[0m_validate_key[0m[0;34m([0m[0mkey[0m[0;34m,[0m [0maxis[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 1142[0;31m             [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_get_slice_axis[0m[0;34m([0m[0mkey[0m[0;34m,[0m [0maxis[0m[0;34m=[0m[0maxis[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   1143[0m         [0;32melif[0m [0mcom[0m[0;34m.[0m[0mis_bool_indexer[0m[0;34m([0m[0mkey[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   1144[0m             [0;32mreturn[0m [0mself[0m[0;34m.[0m[0m_getbool_axis[0m[0;34m([0m[0mkey[0m[0;34m,[0m [0maxis[0m[0;34m=[0m[0maxis[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-
-[0;32m/usr/local/lib/python3.8/dist-packages/pandas/core/indexing.py[0m in [0;36m_get_slice_axis[0;34m(self, slice_obj, axis)[0m
-[1;32m   1174[0m [0;34m[0m[0m
-[1;32m   1175[0m         [0mlabels[0m [0;34m=[0m [0mobj[0m[0;34m.[0m[0m_get_axis[0m[0;34m([0m[0maxis[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 1176[0;31m         [0mindexer[0m [0;34m=[0m [0mlabels[0m[0;34m.[0m[0mslice_indexer[0m[0;34m([0m[0mslice_obj[0m[0;34m.[0m[0mstart[0m[0;34m,[0m [0mslice_obj[0m[0;34m.[0m[0mstop[0m[0;34m,[0m [0mslice_obj[0m[0;34m.[0m[0mstep[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   1177[0m [0;34m[0m[0m
-[1;32m   1178[0m         [0;32mif[0m [0misinstance[0m[0;34m([0m[0mindexer[0m[0;34m,[0m [0mslice[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-
-[0;32m/usr/local/lib/python3.8/dist-packages/pandas/core/indexes/base.py[0m in [0;36mslice_indexer[0;34m(self, start, end, step, kind)[0m
-[1;32m   5683[0m         [0mslice[0m[0;34m([0m[0;36m1[0m[0;34m,[0m [0;36m3[0m[0;34m,[0m [0;32mNone[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   5684[0m         """
-[0;32m-> 5685[0;31m         [0mstart_slice[0m[0;34m,[0m [0mend_slice[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mslice_locs[0m[0;34m([0m[0mstart[0m[0;34m,[0m [0mend[0m[0;34m,[0m [0mstep[0m[0;34m=[0m[0mstep[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   5686[0m [0;34m[0m[0m
-[1;32m   5687[0m         [0;31m# return a slice[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-
-[0;32m/usr/local/lib/python3.8/dist-packages/pandas/core/indexes/base.py[0m in [0;36mslice_locs[0;34m(self, start, end, step, kind)[0m
-[1;32m   5885[0m         [0mstart_slice[0m [0;34m=[0m [0;32mNone[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   5886[0m         [0;32mif[0m [0mstart[0m [0;32mis[0m [0;32mnot[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 5887[0;31m             [0mstart_slice[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0mget_slice_bound[0m[0;34m([0m[0mstart[0m[0;34m,[0m [0;34m"left"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   5888[0m         [0;32mif[0m [0mstart_slice[0m [0;32mis[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   5889[0m             [0mstart_slice[0m [0;34m=[0m [0;36m0[0m[0;34m[0m[0;34m[0m[0m
-
-[0;32m/usr/local/lib/python3.8/dist-packages/pandas/core/indexes/base.py[0m in [0;36mget_slice_bound[0;34m(self, label, side, kind)[0m
-[1;32m   5795[0m         [0;31m# For datetime indices label may be a string that has to be converted[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   5796[0m         [0;31m# to datetime boundary according to its resolution.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 5797[0;31m         [0mlabel[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0m_maybe_cast_slice_bound[0m[0;34m([0m[0mlabel[0m[0;34m,[0m [0mside[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   5798[0m [0;34m[0m[0m
-[1;32m   5799[0m         [0;31m# we need to look up the label[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-
-[0;32m/usr/local/lib/python3.8/dist-packages/pandas/core/indexes/base.py[0m in [0;36m_maybe_cast_slice_bound[0;34m(self, label, side, kind)[0m
-[1;32m   5747[0m         [0;31m# reject them, if index does not contain label[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
-[1;32m   5748[0m         [0;32mif[0m [0;34m([0m[0mis_float[0m[0;34m([0m[0mlabel[0m[0;34m)[0m [0;32mor[0m [0mis_integer[0m[0;34m([0m[0mlabel[0m[0;34m)[0m[0;34m)[0m [0;32mand[0m [0mlabel[0m [0;32mnot[0m [0;32min[0m [0mself[0m[0;34m.[0m[0m_values[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0;32m-> 5749[0;31m             [0;32mraise[0m [0mself[0m[0;34m.[0m[0m_invalid_indexer[0m[0;34m([0m[0;34m"slice"[0m[0;34m,[0m [0mlabel[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m   5750[0m [0;34m[0m[0m
-[1;32m   5751[0m         [0;32mreturn[0m [0mlabel[0m[0;34m[0m[0;34m[0m[0m
-
-[0;31mTypeError[0m: cannot do slice indexing on Index with these indexers [0] of type int
-TypeError: cannot do slice indexing on Index with these indexers [0] of type int
+  File "/usr/local/lib/python3.8/dist-packages/nbclient/client.py", line 949, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+  File "/usr/local/lib/python3.8/dist-packages/nbclient/client.py", line 754, in _async_poll_for_reply
+    await self._async_handle_timeout(timeout, cell)
+  File "/usr/local/lib/python3.8/dist-packages/nbclient/client.py", line 801, in _async_handle_timeout
+    raise CellTimeoutError.error_from_timeout_and_cell(
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+['header = {\'User-Agent\': "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"}', "url = 'https://www.cnnindonesia.com/search/?query=ridwan+kamil'", '', 'judul = []', 'konten = []']
+...
+['IsiBerita = pd.DataFrame(konten, columns=["Isi Berita"])', '', 'data = pd.concat([JudulBerita, IsiBerita], axis=1)', 'data = data.loc[0:50]', 'data']
+-------------------
 
