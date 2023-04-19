@@ -423,17 +423,17 @@ Requirement already satisfied: schedule in /usr/local/lib/python3.9/dist-package
 Requirement already satisfied: geopy in /usr/local/lib/python3.9/dist-packages (from -r requirements.txt (line 11)) (2.3.0)
 Requirement already satisfied: fake-useragent in /usr/local/lib/python3.9/dist-packages (from -r requirements.txt (line 12)) (1.1.3)
 Requirement already satisfied: googletransx in /usr/local/lib/python3.9/dist-packages (from -r requirements.txt (line 13)) (2.4.2)
+Requirement already satisfied: async-timeout&lt;4.0,&gt;=3.0 in /usr/local/lib/python3.9/dist-packages (from aiohttp-&gt;-r requirements.txt (line 1)) (3.0.1)
 Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /usr/local/lib/python3.9/dist-packages (from aiohttp-&gt;-r requirements.txt (line 1)) (6.0.4)
-Requirement already satisfied: yarl&lt;2.0,&gt;=1.0 in /usr/local/lib/python3.9/dist-packages (from aiohttp-&gt;-r requirements.txt (line 1)) (1.8.2)
 Requirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.9/dist-packages (from aiohttp-&gt;-r requirements.txt (line 1)) (22.2.0)
 Requirement already satisfied: chardet&lt;4.0,&gt;=2.0 in /usr/local/lib/python3.9/dist-packages (from aiohttp-&gt;-r requirements.txt (line 1)) (3.0.4)
-Requirement already satisfied: async-timeout&lt;4.0,&gt;=3.0 in /usr/local/lib/python3.9/dist-packages (from aiohttp-&gt;-r requirements.txt (line 1)) (3.0.1)
+Requirement already satisfied: yarl&lt;2.0,&gt;=1.0 in /usr/local/lib/python3.9/dist-packages (from aiohttp-&gt;-r requirements.txt (line 1)) (1.8.2)
 Requirement already satisfied: pycares&gt;=4.0.0 in /usr/local/lib/python3.9/dist-packages (from aiodns-&gt;-r requirements.txt (line 2)) (4.3.0)
 Requirement already satisfied: soupsieve&gt;1.2 in /usr/local/lib/python3.9/dist-packages (from beautifulsoup4-&gt;-r requirements.txt (line 3)) (2.4)
 Requirement already satisfied: elastic-transport&lt;9,&gt;=8 in /usr/local/lib/python3.9/dist-packages (from elasticsearch-&gt;-r requirements.txt (line 6)) (8.4.0)
+Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.9/dist-packages (from pandas&gt;=0.23.0-&gt;-r requirements.txt (line 8)) (2022.7.1)
 Requirement already satisfied: python-dateutil&gt;=2.8.1 in /usr/local/lib/python3.9/dist-packages (from pandas&gt;=0.23.0-&gt;-r requirements.txt (line 8)) (2.8.2)
 Requirement already satisfied: numpy&gt;=1.20.3 in /usr/local/lib/python3.9/dist-packages (from pandas&gt;=0.23.0-&gt;-r requirements.txt (line 8)) (1.22.4)
-Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.9/dist-packages (from pandas&gt;=0.23.0-&gt;-r requirements.txt (line 8)) (2022.7.1)
 Requirement already satisfied: geographiclib&lt;3,&gt;=1.52 in /usr/local/lib/python3.9/dist-packages (from geopy-&gt;-r requirements.txt (line 11)) (2.0)
 Requirement already satisfied: importlib-resources&gt;=5.0 in /usr/local/lib/python3.9/dist-packages (from fake-useragent-&gt;-r requirements.txt (line 12)) (5.12.0)
 Requirement already satisfied: requests in /usr/local/lib/python3.9/dist-packages (from googletransx-&gt;-r requirements.txt (line 13)) (2.27.1)
@@ -445,12 +445,14 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.9/dist-pack
 Requirement already satisfied: idna&gt;=2.0 in /usr/local/lib/python3.9/dist-packages (from yarl&lt;2.0,&gt;=1.0-&gt;aiohttp-&gt;-r requirements.txt (line 1)) (3.4)
 Requirement already satisfied: charset-normalizer~=2.0.0 in /usr/local/lib/python3.9/dist-packages (from requests-&gt;googletransx-&gt;-r requirements.txt (line 13)) (2.0.12)
 Requirement already satisfied: pycparser in /usr/local/lib/python3.9/dist-packages (from cffi&gt;=1.5.0-&gt;pycares&gt;=4.0.0-&gt;aiodns-&gt;-r requirements.txt (line 2)) (2.21)
-Building wheels for collected packages: twint
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building wheels for collected packages: twint
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Building wheel for twint (setup.py) ... ?25l?25hdone
-  Created wheel for twint: filename=twint-2.1.21-py3-none-any.whl size=38866 sha256=f867a4c427fdb3626c21f34fd1524e2072bdb3421b24cdf30f60d8deb295eef1
-  Stored in directory: /tmp/pip-ephem-wheel-cache-2ra1nr7f/wheels/7d/75/de/cfd0e566e02a950336c7f2dfc96c92451c949210eb90da5b34
+  Created wheel for twint: filename=twint-2.1.21-py3-none-any.whl size=38866 sha256=fefe03d7886829026541a1f3f77ee409f5da3b84380c5516457cec570b2bda3d
+  Stored in directory: /tmp/pip-ephem-wheel-cache-nwtfcw0z/wheels/7d/75/de/cfd0e566e02a950336c7f2dfc96c92451c949210eb90da5b34
 Successfully built twint
 </pre></div>
 </div>
@@ -459,9 +461,7 @@ Successfully built twint
     Found existing installation: twint 2.1.21
     Uninstalling twint-2.1.21:
       Successfully uninstalled twint-2.1.21
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Successfully installed twint-2.1.21
+Successfully installed twint-2.1.21
 </pre></div>
 </div>
 </div>
@@ -475,11 +475,11 @@ Successfully built twint
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looking in indexes: https://pypi.org/simple, https://us-python.pkg.dev/colab-wheels/public/simple/
 Requirement already satisfied: aiohttp==3.7.0 in /usr/local/lib/python3.9/dist-packages (3.7.0)
-Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /usr/local/lib/python3.9/dist-packages (from aiohttp==3.7.0) (6.0.4)
-Requirement already satisfied: async-timeout&lt;4.0,&gt;=3.0 in /usr/local/lib/python3.9/dist-packages (from aiohttp==3.7.0) (3.0.1)
-Requirement already satisfied: chardet&lt;4.0,&gt;=2.0 in /usr/local/lib/python3.9/dist-packages (from aiohttp==3.7.0) (3.0.4)
 Requirement already satisfied: yarl&lt;2.0,&gt;=1.0 in /usr/local/lib/python3.9/dist-packages (from aiohttp==3.7.0) (1.8.2)
+Requirement already satisfied: chardet&lt;4.0,&gt;=2.0 in /usr/local/lib/python3.9/dist-packages (from aiohttp==3.7.0) (3.0.4)
+Requirement already satisfied: async-timeout&lt;4.0,&gt;=3.0 in /usr/local/lib/python3.9/dist-packages (from aiohttp==3.7.0) (3.0.1)
 Requirement already satisfied: attrs&gt;=17.3.0 in /usr/local/lib/python3.9/dist-packages (from aiohttp==3.7.0) (22.2.0)
+Requirement already satisfied: multidict&lt;7.0,&gt;=4.5 in /usr/local/lib/python3.9/dist-packages (from aiohttp==3.7.0) (6.0.4)
 Requirement already satisfied: idna&gt;=2.0 in /usr/local/lib/python3.9/dist-packages (from yarl&lt;2.0,&gt;=1.0-&gt;aiohttp==3.7.0) (3.4)
 </pre></div>
 </div>
