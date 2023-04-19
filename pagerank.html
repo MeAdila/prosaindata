@@ -65,6 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'pagerank';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="UTS KLASIFIKASI TEXT ABSTRAK" href="UTS_abstrack.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,11 +157,12 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">TASK</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Berita.html">Crawlinng Berita Ridwan Kamil</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PTA.html">Crawling PTA</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Twitter.html">Crawling Twitter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="UTS_abstrack.html">UTS KLASIFIKASI TEXT ABSTRAK</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">THR PAGERANK</a></li>
 </ul>
 
     </div>
@@ -1070,8 +1072,6 @@ Size of the matrix is: 48
 </div>
 <div class="section" id="trasnformasi-bag-of-words-matrix-menjadi-normal-matrix">
 <h3>TRASNFORMASI BAG-OF-WORDS MATRIX MENJADI NORMAL MATRIX<a class="headerlink" href="#trasnformasi-bag-of-words-matrix-menjadi-normal-matrix" title="Permalink to this heading">#</a></h3>
-<p>mengimplementasikan proses transformasi dari bag-of-words matrix menjadi normal matrix dengan menggunakan metode TF-IDF (Term Frequency-Inverse Document Frequency). Pada dasarnya, metode TF-IDF digunakan untuk memberi bobot pada setiap kata dalam setiap dokumen, di mana kata yang muncul lebih sering dalam dokumen tersebut akan memiliki bobot yang lebih besar, tetapi kata yang muncul di banyak dokumen akan memiliki bobot yang lebih kecil.</p>
-<p>Pada kode di bawah ini, fungsi TfidfTransformer() digunakan untuk menghitung bobot TF-IDF pada setiap kata dalam setiap dokumen yang dihasilkan oleh CountVectorizer(). Kemudian, hasil transformasi normal matrix diubah menjadi array dengan menggunakan metode toarray().</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">normal_matrix</span> <span class="o">=</span> <span class="n">TfidfTransformer</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">cv_matrix</span><span class="p">)</span>
@@ -1110,7 +1110,6 @@ Size of the matrix is: 48
 </div>
 <div class="section" id="konversi-matriks-ke-graph">
 <h3>KONVERSI MATRIKS KE GRAPH<a class="headerlink" href="#konversi-matriks-ke-graph" title="Permalink to this heading">#</a></h3>
-<p>dilakukan konversi dari matriks sparse hasil normalisasi menjadi graph menggunakan nx.from_scipy_sparse_array(). Kemudian, graph tersebut direpresentasikan dalam bentuk lingkaran menggunakan nx.draw_circular(nx_graph). Selanjutnya, dilakukan print jumlah edge dan vertex pada graph menggunakan method nx_graph.number_of_edges() dan nx_graph.number_of_nodes(). Terakhir, plot dari graph ditampilkan menggunakan plt.show(). Setelah itu, dilakukan print ukuran memori yang digunakan oleh graph dalam bentuk byte menggunakan sys.getsizeof(nx_graph)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx_graph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_scipy_sparse_array</span><span class="p">(</span><span class="n">res_graph</span><span class="p">)</span>
@@ -1503,6 +1502,15 @@ hoped that he had forgotten his anger by then.
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="UTS_abstrack.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">UTS KLASIFIKASI TEXT ABSTRAK</p>
+      </div>
+    </a>
 </div></div>
   
 </div>
