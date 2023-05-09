@@ -30,8 +30,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['import re', 'titles = []', 'writers= []', 'abstracts = []', '']
+['from Sastrawi.Stemmer.StemmerFactory import StemmerFactory', '', '# inisialisasi stemmer bahasa Indonesia', 'factory = StemmerFactory()', 'stemmer = factory.create_stemmer()']
 ...
-['    titles.append(title.text.upper())', '', 'print(len(abstracts),len(titles),len(writers))', "data = {'Title':titles,'Penulis':writers, 'Abstract':abstracts}", 'data']
+['  steaming.append(stem)', '# tampilkan hasil stemming', '', 'data_steaming = pd.DataFrame(steaming, columns=["Data Steaming"])', 'data_steaming']
 -------------------
 
