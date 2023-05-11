@@ -30,8 +30,7 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['from Sastrawi.Stemmer.StemmerFactory import StemmerFactory', '', '# inisialisasi stemmer bahasa Indonesia', 'factory = StemmerFactory()', 'stemmer = factory.create_stemmer()']
-...
-['  steaming.append(stem)', '# tampilkan hasil stemming', '', 'data_steaming = pd.DataFrame(steaming, columns=["Data Steaming"])', 'data_steaming']
+from google.colab import drive
+drive.mount('/content/drive')
 -------------------
 
